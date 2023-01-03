@@ -3,6 +3,14 @@
 ## Onboarding
 
 ### 1. Check the channel used by MDE extension (MDE integration with MDC)
+https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-install-manually?view=o365-worldwide#configure-the-linux-software-repository
+```
+Defender for Endpoint on Linux can be deployed from one of the following channels (denoted below as [channel]): 
+* insiders-fast
+* insiders-slow
+* prod
+Each of these channels corresponds to a Linux software repository.
+```
 
 Once the VM is onboared to MDE, We can confirm the current repository using the command
 ```cmd
@@ -13,7 +21,7 @@ mdatp health --field release_ring
 
 `prod` channel is used while onboarding the machines via MDE extension:
 
-![image](https://user-images.githubusercontent.com/96930989/210289839-3d7e43f4-cc14-4d51-8acb-7a4178a0b438.png)
+![image](https://user-images.githubusercontent.com/96930989/210290330-5e804277-fc49-4d7b-a8d0-198bbafa5026.png)
 
 
 ### 2. Switch the `repository` after the initial installation 
