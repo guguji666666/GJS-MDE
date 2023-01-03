@@ -1,6 +1,6 @@
 # MDE FAQ
 
-## Onborading
+## Onboarding
 
 ### 1. Check the channel used by MDE extension (MDE integration with MDC)
 
