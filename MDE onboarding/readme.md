@@ -34,11 +34,17 @@ unzip -q XMDEClientAnalyzer.zip
 ```sh
 cd XMDEClientAnalyzer
 ```
-````sh
+```sh
 chmod +x mde_support_tool.sh
 ```
 
-Run as `non-root` user to install required pip and lxml which components: ./mde_support_tool.sh
+Run as `non-root` user to install required pip and lxml which components: 
+```sh
+sudo <user you want to switch>
+```
+```sh
+./mde_support_tool.sh
+```
 
 To collect actual diagnostic package and generate the result archive file run again as root: 
 ```sh
