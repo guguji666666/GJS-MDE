@@ -45,13 +45,9 @@ Search for 1150, if you can find the results like below, then it means the endpo
 
  
 
-#### 3. Check MPLog-xxxxx-235042xxxx.log
-
- 
+#### 3. Check MPLog-xxxxx-235042xxxx.log 
 
 ![img](https://guguimage.aceultraman.com/i/2023/08/14/j4znr6-1.jpg)
-
- 
 
 Check if you can find the keyword `RTP start` in the file
 
