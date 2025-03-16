@@ -1,4 +1,4 @@
-# Simulate MDE alerts and incidents
+![image](https://github.com/user-attachments/assets/d3960213-0cee-4348-b841-5166cd7a3c52)# Simulate MDE alerts and incidents
 
 ## 1. Multi-stage incident involving Defense evasion & Discovery on one endpoint
 
@@ -151,4 +151,10 @@ Invoke-Expression ([System.Text.Encoding]::UTF8.GetString($decryptedBytes))
 
 ```powershell
 Invoke-WebRequest  "https://www.eicar.org/download/eicar_com-zip/?wpdmdl=8847&refresh=65d4b58cc7e0e1708438924" -OutFile C:\project\ps.zip
+```
+
+## 4. Suspicious command detected
+```cmd
+sc stop WinDefend
+# sc config WinDefend start= disabled
 ```
