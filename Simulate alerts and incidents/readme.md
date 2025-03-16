@@ -158,3 +158,4 @@ Invoke-WebRequest  "https://www.eicar.org/download/eicar_com-zip/?wpdmdl=8847&re
 sc stop WinDefend
 # sc config WinDefend start= disabled
 ```
+![image](https://github.com/user-attachments/assets/d9fa1692-3284-417e-8fdd-7690dba49ebc)
